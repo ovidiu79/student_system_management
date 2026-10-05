@@ -36,29 +36,50 @@
 	</nav>
 	<br /><br />
 	
-	<div class="container">
-		<div class="row">
-			<h1>List of Students</h1>	
+	<div class="container row col-md-8 offset-md-2">
+		<div class="card">
+			<div class="card-header">
+				<h2 class="text-center">Create New Student</h2>
+			</div>
+			<div class="card-body">
+				<form method="post" role="form" th:action="@{/students}" th:object="${student}">
+					<div class="form-group mb-3">
+						<label class="form-label">Student First Name</label>
+						<input
+							class="form-control"
+							if="firstName"
+							name="firstName"
+							placeholder="Enter Student First Name"
+							type="text"
+							th:field="*{firstName}"
+						/>
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label">Student Last Name</label>
+						<input
+							class="form-control"
+							if="lastName"
+							name="lastName"
+							placeholder="Enter Student Last Name"
+							type="text"
+							th:field="*{lastName}"
+						/>
+					</div>
+					<div class="form-group mb-3">
+						<label class="form-label">Student Email</label>
+						<input
+							class="form-control"
+							if="email"
+							name="email"
+							placeholder="Enter Student Email"
+							type="email"
+							th:field="*{email}"
+						/>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
 		</div>
-		<br />
-		<table class="table table-striped table-hover table-bordered">
-				<thead class="thead-dark">
-					<tr>
-						<th>Student First Name</th>
-						<th>Student Last Name</th>
-						<th>Student Email</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="student : ${students}">
-						<td th:text="${student.firstName}"></td>
-						<td th:text="${student.lastName}"></td>
-						<td th:text="${student.email}"></td>
-						<td></td>
-					</tr>
-				</tbody>
-		</table>
 	</div>
 </body>
 
